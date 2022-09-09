@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable react/no-access-state-in-setstate */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/jsx-key */
 /* eslint-disable react/state-in-constructor */
@@ -27,8 +29,15 @@ class TodoContainer extends React.Component {
     ],
   };
 
-  handleChange = () => {
-    console.log('clicked');
+  handleChange = (id) => {
+    this.setState({
+      todos: this.state.todos.map((todo) => {
+        if (todo.id === id) {
+          todo.completed = !todo.completed;
+        }
+        return todo;
+      }),
+    });
   };
 
   render() {
