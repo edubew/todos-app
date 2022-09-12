@@ -1,23 +1,13 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/prefer-stateless-function */
-import React from 'react';
-import TodoItem from './TodoItem';
+import React, { useState } from 'react';
+import InputTodo from './InputTodo';
 
-class TodosList extends React.Component {
-  render() {
-    return (
-      <ul>
-        {this.props.todos.map((todo) => (
-          <TodoItem
-            key={todo.id}
-            todo={todo}
-            handleChangeProps={this.props.handleChangeProps}
-          />
-        ))}
-      </ul>
-    );
-  }
-}
+const TodosList = () => {
+  const [todos, setTodos] = useState([]);
+  return (
+    <div>
+      <InputTodo />
+    </div>
+  );
+};
 
 export default TodosList;

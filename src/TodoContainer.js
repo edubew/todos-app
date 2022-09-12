@@ -1,12 +1,12 @@
 import React from 'react';
-import InputTodo from './components/InputTodo';
+import TodosList from './components/TodosList';
+import Header from './components/Header';
 
-const TodoContainer = () => {
-  return (
-    <div>
-      <InputTodo />
-    </div>
-  );
-}
+const TodoContainer = () => (
+  <div>
+    <Header />
+    <TodosList />
+  </div>
+);
 
 export default TodoContainer;
