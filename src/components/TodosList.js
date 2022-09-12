@@ -21,6 +21,13 @@ const TodosList = () => {
     setTodos(removeArr);
   };
 
+  const updateTodo = (todoId, newValue) => {
+    if (!newValue.text || /^\s*$/.test(newValue.text)) {
+      return;
+    }
+    setTodos((prev) => prev.map((item) => (item.id === todoId ? newValue : item)));
+  };
+
   const completeTodo = (id) => {
     const updatedTodos = todos.map((todo) => {
       if (todo.id === id) {
@@ -31,10 +38,16 @@ const TodosList = () => {
     });
     setTodos(updatedTodos);
   };
+
   return (
     <div>
       <InputTodo onSubmit={addTodo} />
-      <TodoItem todos={todos} completeTodo={completeTodo} removeTodo={removeTodo} />
+      <TodoItem
+        todos={todos}
+        completeTodo={completeTodo}
+        removeTodo={removeTodo}
+        updateTodo={updateTodo}
+      />
     </div>
   );
 };

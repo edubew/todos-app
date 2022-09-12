@@ -1,12 +1,29 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { MdDeleteSweep } from 'react-icons/md';
 import { TiEdit } from 'react-icons/ti';
+import InputTodo from './InputTodo';
 
-const TodoItem = ({ todos, completeTodo, removeTodo }) => {
+const TodoItem = ({
+  todos, completeTodo, removeTodo, updateTodo,
+}) => {
   const [edit, setEdit] = useState({
     id: null,
     value: '',
   });
+
+  const submitUpdate = (value) => {
+    updateTodo(edit.id, value);
+    setEdit({
+      id: null,
+      value: '',
+    });
+  };
+
+  if (edit.id) {
+    return <InputTodo edit={edit} onSubmit={submitUpdate} />;
+  }
+
   return todos.map((todo, index) => (
     <li
       className={todo.isComplete ? 'todo__completed' : 'todo__row'}
