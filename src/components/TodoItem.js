@@ -1,21 +1,33 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/prefer-stateless-function */
-import React from 'react';
+import React, { useState } from 'react';
+import { MdDeleteSweep } from 'react-icons/md';
+import { TiEdit } from 'react-icons/ti';
 
-class TodoItem extends React.Component {
-  render() {
-    return (
-      <li>
-        <input
-          type="checkbox"
-          checked={this.props.todo.completed}
-          onChange={() => this.props.handleChangeProps(this.props.todo.id)}
+const TodoItem = ({ todos, completeTodo, removeTodo }) => {
+  const [edit, setEdit] = useState({
+    id: null,
+    value: '',
+  });
+  return todos.map((todo, index) => (
+    <li
+      className={todo.isComplete ? 'todo__completed' : 'todo__row'}
+      // eslint-disable-next-line react/no-array-index-key
+      key={index}
+    >
+      <input
+        type="checkbox"
+        key={todo.id}
+        onClick={() => completeTodo(todo.id)}
+      />
+      {todo.text}
+      <div className="todo__icons">
+        <MdDeleteSweep
+          onClick={() => removeTodo(todo.id)}
+          className="delete__icon"
         />
-        {this.props.todo.title}
-      </li>
-    );
-  }
-}
+        <TiEdit onClick={() => setEdit({ id: todo.id, value: todo.text })} className="edit__icon" />
+      </div>
+    </li>
+  ));
+};
 
 export default TodoItem;
