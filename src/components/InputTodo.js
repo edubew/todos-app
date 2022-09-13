@@ -49,5 +49,10 @@ const InputTodo = (props) => {
     </form>
   );
 };
-
+InputTodo.propTypes = {
+  edit: PropTypes.shape({
+    value: PropTypes.string.isRequired,
+  }).isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
 export default InputTodo;
