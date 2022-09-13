@@ -3,7 +3,7 @@ import TodosList from './components/TodosList';
 import Header from './components/Header';
 
 const TodoContainer = () => (
-  <div>
+  <div className="todos__container">
     <Header />
     <TodosList />
   </div>

@@ -1,7 +1,9 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
 import React, { useState } from 'react';
 
 const InputTodo = (props) => {
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState(props.edit ? props.edit.value : '');
 
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -20,8 +22,30 @@ const InputTodo = (props) => {
 
   return (
     <form className="todo__form" onSubmit={handleSubmit}>
-      <input type="text" placeholder="Add a todo" value={input} name="text" onChange={handleChange} />
-      <button type="submit" className="todo__button">Add todo</button>
+      {props.edit ? (
+        <>
+          <input
+            type="text"
+            placeholder="Edit todo"
+            value={input}
+            name="text"
+            onChange={handleChange}
+          />
+          <button type="submit" className="edit__button">Update</button>
+        </>
+      )
+        : (
+          <>
+            <input
+              type="text"
+              placeholder="Add a todo"
+              value={input}
+              name="text"
+              onChange={handleChange}
+            />
+            <button type="submit" className="add__button">Add todo</button>
+          </>
+        )}
     </form>
   );
 };
