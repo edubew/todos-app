@@ -3,7 +3,9 @@
 import React, { useState } from 'react';
 
 const InputTodo = (props) => {
-  const [input, setInput] = useState(props.edit ? props.edit.value : '');
+const InputTodo = (props) => {
+  const { edit, onSubmit } = props;
+  const [input, setInput] = useState(edit ? edit.value : '');
 
   const handleChange = (e) => {
     setInput(e.target.value);
