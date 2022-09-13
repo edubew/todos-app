@@ -14,7 +14,7 @@ const InputTodo = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    props.onSubmit({
+   onSubmit({
       id: Math.floor(Math.random() * 1000),
       text: input,
     });
