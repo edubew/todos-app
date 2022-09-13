@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import TodoContainer from './TodoContainer';
 import './index.css';
 
-ReactDOM.render(
+const root = document.getElementById('root');
+const container = createRoot(root);
+container.render(
   <React.StrictMode>
     <TodoContainer />
   </React.StrictMode>,
