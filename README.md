@@ -15,7 +15,7 @@ The main objective of this project is to extensively learn the react framework.
 
 
 #### To get a local copy up and running follow the following steps:
- ## Prerequisites
+ ### Prerequisites
     - Github account
     - Code editor
     - Git
