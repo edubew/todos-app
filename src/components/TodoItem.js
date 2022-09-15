@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { MdDeleteSweep } from 'react-icons/md';
 import { TiEdit } from 'react-icons/ti';
 import InputTodo from './InputTodo';
@@ -45,6 +45,19 @@ const TodoItem = ({
       </div>
     </li>
   ));
+};
+
+TodoItem.propTypes = {
+  todos: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      title: PropTypes.string,
+      completed: PropTypes.bool,
+    }),
+  ).isRequired,
+  completeTodo: PropTypes.func.isRequired,
+  removeTodo: PropTypes.func.isRequired,
+  updateTodo: PropTypes.func.isRequired,
 };
 
 export default TodoItem;

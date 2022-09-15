@@ -1,8 +1,6 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
-const InputTodo = (props) => {
 const InputTodo = (props) => {
   const { edit, onSubmit } = props;
   const [input, setInput] = useState(edit ? edit.value : '');
@@ -14,7 +12,7 @@ const InputTodo = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-   onSubmit({
+    onSubmit({
       id: Math.floor(Math.random() * 1000),
       text: input,
     });
@@ -24,7 +22,7 @@ const InputTodo = (props) => {
 
   return (
     <form className="todo__form" onSubmit={handleSubmit}>
-      {props.edit ? (
+      {edit ? (
         <>
           <input
             type="text"
@@ -51,10 +49,12 @@ const InputTodo = (props) => {
     </form>
   );
 };
+
 InputTodo.propTypes = {
   edit: PropTypes.shape({
     value: PropTypes.string.isRequired,
   }).isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
+
 export default InputTodo;

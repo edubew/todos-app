@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import TodoContainer from './TodoContainer';
 import './index.css';
 
@@ -9,5 +9,4 @@ container.render(
   <React.StrictMode>
     <TodoContainer />
   </React.StrictMode>,
-  document.getElementById('root'),
 );

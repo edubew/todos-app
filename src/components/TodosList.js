@@ -31,12 +31,10 @@ const TodosList = () => {
   const completeTodo = (id) => {
     const updatedTodos = todos.map((todo) => {
       if (todo.id === id) {
-        // eslint-disable-next-line no-param-reassign
         return {
           ...todo,
           complete: !todo.complete,
         };
-
       }
       return todo;
     });
