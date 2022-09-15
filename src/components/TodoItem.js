@@ -46,5 +46,16 @@ const TodoItem = ({
     </li>
   ));
 };
-
+TodoItem.propTypes = {
+  todos: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      title: PropTypes.string,
+      completed: PropTypes.bool,
+    }),
+  ).isRequired,
+  completeTodo: PropTypes.func.isRequired,
+  removeTodo: PropTypes.func.isRequired,
+  updateTodo: PropTypes.func.isRequired,
+};
 export default TodoItem;
